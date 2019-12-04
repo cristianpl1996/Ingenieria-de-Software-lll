@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,6 +29,9 @@ public class EmpleadoRestController {
 
 	@Autowired
 	private IEmpleadoService empleadoService;
+	
+	@Autowired
+	private BCryptPasswordEncoder passwordEncoder;
 
 	@GetMapping("/empleados")
 	public List<Empleado> index() {
@@ -57,6 +61,8 @@ public class EmpleadoRestController {
 		Empleado empleadoNew = null;
 		Map<String, Object> response = new HashMap<>();
 		try {
+			String password = empleado.getPassword();
+			empleado.setPassword(passwordEncoder.encode(password));
 			empleadoNew = empleadoService.save(empleado);
 		} catch (DataAccessException e) {
 			response.put("mensaje", "Error en realizar el insert en la base de datos");

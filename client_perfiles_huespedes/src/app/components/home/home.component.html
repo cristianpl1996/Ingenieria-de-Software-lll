@@ -1,0 +1,115 @@
+<div class="container-fluid p-1">
+  <div class="row justify-content-center no-gutters">
+      <div class="col-4 col-sm-4 col-md-2 col.lg-2">
+          <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-info p-0 nv-h">
+              <div class="container-fluid d-flex flex-column p-0">
+                  <a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" [routerLink]="['/home']">
+                      <div class="sidebar-brand-icon rotate-n-15">
+                          <i class="fas fa-folder-open"></i>
+                      </div>
+                      <div class="sidebar-brand-text mx-3">
+                          <span>HMS©</span>
+                      </div>
+                  </a>
+                  <hr class="sidebar-divider my-0">
+                  <ul class="nav navbar-nav text-light" id="accordionSidebar">
+                      <li class="nav-item" role="presentation">
+                        <a class="nav-link active" [routerLink]="['/home/users']">
+                            <i class="fas fa-users"></i>&nbsp;
+                            <span>Empleados</span>
+                        </a>
+                        <a class="nav-link active" [routerLink]="['/home/projects']">
+                            <i class="fas fa-user"></i>&nbsp;
+                            <span>Huespedes</span>
+                        </a>
+                        <a class="nav-link active" [routerLink]="['/home/resources']">
+                            <i class="fas fa-book"></i>&nbsp;
+                            <span>Reservas</span>
+                        </a>
+                      </li>
+                  </ul>
+              </div>
+          </nav>
+      </div>
+      <div class="col-8 col-sm-8 col-md-10 col-lg-10">
+          <div class="d-flex flex-column" id="content-wrapper">
+              <div id="content">
+                  <div class="d-flex justify-content-center bg-white">
+                      <img src="/../../assets/logo" class="img-fluid" alt="logo">
+                  </div>
+                  <nav class="navbar navbar-light navbar-expand bg-white static-top shadow border-bottom-0 border border-light">
+                      <div class="container-fluid">
+                          <button class="btn d-md-none" type="button">
+                              <i class="fas fa-bars"></i>
+                          </button>
+                          <form
+                              class="form-inline d-none d-sm-inline-block mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                              <div class="input-group">
+                                  <input class="bg-light form-control border-0 small" type="text" placeholder="Buscar...">
+                                  <div class="input-group-append">
+                                      <button class="btn btn-info py-0" type="button">
+                                          <i class="fas fa-search"></i>
+                                      </button>
+                                  </div>
+                              </div>
+                          </form>
+                          <ul class="nav navbar-nav flex-nowrap ml-auto">
+                              <li class="nav-item dropdown d-sm-none no-arrow">
+                                  <a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#">
+                                      <i class="fas fa-search"></i>
+                                  </a>
+                                  <div class="dropdown-menu dropdown-menu-right p-3 animated--grow-in" role="menu" aria-labelledby="searchDropdown">
+                                      <form class="form-inline mr-auto navbar-search w-100">
+                                          <div class="input-group">
+                                              <input class="bg-light form-control border-0 small" type="text" placeholder="Buscar...">
+                                              <div class="input-group-append">
+                                                  <button class="btn btn-info py-0" type="button">
+                                                      <i class="fas fa-search"></i>
+                                                  </button>
+                                              </div>
+                                          </div>
+                                      </form>
+                                  </div>
+                              </li>
+                              <div class="shadow dropdown-list dropdown-menu dropdown-menu-right"
+                                  aria-labelledby="alertsDropdown"></div>
+                              <div class="d-none d-sm-block topbar-divider"></div>
+                              <li class="nav-item dropdown no-arrow">
+                                  <a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false"
+                                      href="#">
+                                      <span class="d-none d-lg-inline mr-2 text-gray-600 small">{{identidad.Nombre_usuario}} {{identidad.Apellido_usuario}}</span>
+                                      <i class="fas fa-user"></i>
+                                  </a>
+                                  <div class="dropdown-menu shadow dropdown-menu-right animated--grow-in" role="menu">
+                                      <a class="dropdown-item pointer" role="presentation" [routerLink]="['/home']">
+                                          <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Perfil
+                                      </a>
+                                      <div class="dropdown-divider"></div>
+                                      <a class="dropdown-item pointer" role="presentation" (click)="logOut()" >
+                                          <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Cerrar Sesión
+                                      </a>
+                                  </div>
+                              </li>
+                          </ul>
+                      </div>
+                  </nav>
+                  <div class="overflow-auto bg-white nv-m">
+                    <router-outlet></router-outlet>
+                  </div>
+              </div>
+              <div class="col bg-light">
+                <div class="footer-basic bg-light">
+                  <footer>
+                    <div class="social">
+                      <a [routerLink]="['/']"><i class="icon ion-android-home"></i></a>
+                      <a href="https://github.com/"><i class="icon ion-social-github"></i></a>
+                      <a href="https://www.whatsapp.com/"><i class="icon ion-social-whatsapp"></i></a>
+                    </div>
+                      <p class="copyright">Hotel Manegement System © HMS 2019</p>
+                  </footer>
+                </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

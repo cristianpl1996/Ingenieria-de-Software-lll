@@ -1,0 +1,42 @@
+<div class="container-fluid p-4">
+    <div class="row justify-content-center align-items-center">
+        <div class="col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+            <div class="card text-center border-secondary shadow">
+                <div class="card-body">
+                    <form class="mt-3">
+                        <a class="btn btn-link" [routerLink]="['/']">
+                          <img src="../../../assets/logo" class="card-img" alt="logo">
+                        </a>
+                        <h5 class="card-title text-info mt-3 ">Inicio de Sesión</h5>
+                        <div class="form-group mt-3">
+                          <input type="email" class="form-control mt-auto " placeholder="Correo Electrónico">
+                        </div>
+                        <div class="form-group mt-3">
+                            <input type="password" class="form-control mt-auto " placeholder="Contraseña">
+                        </div>
+                        <div class="form-group mt-3">
+                          <button class="btn btn-info btn-block">Iniciar Sesión</button>
+                        </div>
+                        <a class="btn btn-link text-info mt-3" [routerLink]="['/registerhuesped']" style="text-decoration:none;">Registrar Huespedes</a>
+                        <a class="btn btn-link text-info mt-3" [routerLink]="['/registerreserva']" style="text-decoration:none;">Realizar Reservacion</a>
+                        <p class="mt-3 mb-2 text-muted">Hotel Managament System © HMS 2019</p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="footer-basic">
+    <footer>
+        <div class="social">
+            <a [routerLink]="['/']"><i class="icon ion-android-home"></i></a>
+            <a href="https://github.com/"><i class="icon ion-social-github"></i></a>
+            <a href="https://www.whatsapp.com/"><i class="icon ion-social-whatsapp"></i></a>
+        </div>
+        <ul class="list-inline">
+            <li class="list-inline-item"><a [routerLink]="['/']">Inicio</a></li>
+            <li class="list-inline-item"><a href="https://www.utp.edu.co/">Universidad Tecnológica de Pereira</a></li>
+        </ul>
+        <p class="copyright">Hotel Managament System © HMS 2019</p>
+    </footer>
+</div>

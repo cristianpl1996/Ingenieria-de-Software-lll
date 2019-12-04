@@ -1,0 +1,19 @@
+.nv-h {
+  height: 900px;
+}
+
+@media (max-width: 576px) {
+  .nv-m {
+      height: 642px;
+  }
+}
+
+@media (min-width: 768px) {
+  .nv-m {
+      height: 600px;
+  }
+}
+
+.pointer {
+  cursor: pointer;
+}

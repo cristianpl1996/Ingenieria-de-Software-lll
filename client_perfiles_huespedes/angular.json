@@ -24,7 +24,11 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "src/bootstrap.css",
+              "src/Footer-Basic.css",
+              "src/fonts/ionicons.min.css",
+              "src/fonts/fontawesome-all.min.css"
             ],
             "scripts": []
           },
