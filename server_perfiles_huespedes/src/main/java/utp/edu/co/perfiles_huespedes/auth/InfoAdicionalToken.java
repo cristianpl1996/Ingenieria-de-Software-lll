@@ -30,21 +30,23 @@ public class InfoAdicionalToken implements TokenEnhancer {
 		if (empleado == null) {
 			Huesped huesped = huespedService.findByUsername(authentication.getName());
 			Map<String, Object> info = new HashMap<>();
-			info.put("Info adicional", "Hola que tal!".concat(authentication.getName()));
+			info.put("Username", authentication.getName());
 			info.put("Nombre", huesped.getNombres());
 			info.put("Apellido", huesped.getApellidos());
 			info.put("Cedula", huesped.getCedula());
-			info.put("Tipo", huesped.getTipos());
 			info.put("Telefono", huesped.getTelefono());
+			info.put("Email", huesped.getEmail());
+			info.put("Tipo", authentication.getAuthorities());
 			((DefaultOAuth2AccessToken) accessToken).setAdditionalInformation(info);
 		} else {
 			Map<String, Object> info = new HashMap<>();
-			info.put("Info adicional", "Hola que tal! ".concat(authentication.getName()));
+			info.put("Username", authentication.getName());
 			info.put("Nombre", empleado.getNombres());
 			info.put("Apellido", empleado.getApellidos());
 			info.put("Cedula", empleado.getCedula());
-			info.put("Tipo", empleado.getRoles());
 			info.put("Telefono", empleado.getTelefono());
+			info.put("Email", empleado.getEmail());
+			info.put("Role", authentication.getAuthorities());
 			((DefaultOAuth2AccessToken) accessToken).setAdditionalInformation(info);
 		}
 		return accessToken;
