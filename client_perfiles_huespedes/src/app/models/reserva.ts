@@ -4,7 +4,7 @@ export interface Reserva {
     apellidos?: string;
     cedula?: string;
     telefono?: number;
-    correo?: string;
+    email?: string;
     pais?: string;
     ciudad?: string;
     direccion?: string;
