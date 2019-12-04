@@ -1,0 +1,36 @@
+<div>
+    <table>
+        <thead>
+        <tr>
+            <th scope="col">id</th>
+            <th scope="col">Rol</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellido</th>
+            <th scope="col">Cedula</th>
+            <th scope="col">Pais</th>
+            <th scope="col">Ciudad</th>
+            <th scope="col">Direccion</th>
+            <th scope="col">Telefono</th>
+            <th scope="col">Correo</th>
+            <th scope="col">Contraseña</th>
+            <th scope="col">Fecha</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let huesped of huespedes">
+            <td>{{huesped.id}}</td>
+            <td>{{huesped.tipo}}</td>
+            <td>{{huesped.nombres}}</td>
+            <td>{{huesped.apellidos}}</td>
+            <td>{{huesped.cedula}}</td>
+            <td>{{huesped.pais}}</td>
+            <td>{{huesped.ciudad}}</td>
+            <td>{{huesped.direccion}}</td>
+            <td>{{huesped.telefono}}</td>
+            <td>{{huesped.correo}}</td>
+            <td>******</td>
+            <td>{{huesped.createAt}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
