@@ -29,7 +29,7 @@ const routes: Routes = [
     { path: 'huespedes', component: HuespedesComponent, canActivate: [RolGuard], children: [
       { path: '', component: RegisterHuespedAppComponent }
     ] },
-    { path: 'reservas', component: ReservasComponent, canActivate: [RolGuard], children: [
+    { path: 'reservas', component: ReservasComponent, children: [
       { path: '', component: RegisterReservaAppComponent }
     ] },
     { path: 'updatereserva', component: UpdateReservaAppComponent, canActivate: [RolGuard]},

@@ -3,7 +3,7 @@
       <li class="nav-item">
         <a class="nav-link text-info active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Reservas</a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item" *ngIf="(identidad.role == 'ROLE_GERENTE') || (identidad.role == 'ROLE_RECEPCIONISTA')">
         <a class="nav-link text-info" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Registrar Reservas</a>
       </li>
     </ul>
@@ -24,8 +24,8 @@
                             <th scope="col">Email</th>
                             <th scope="col">Fecha</th>
                             <th scope="col">Habitaciones</th>
-                            <th scope="col">Actualizar</th>
-                            <th scope="col">Eliminar</th>
+                            <th scope="col" *ngIf="(identidad.role == 'ROLE_GERENTE') || (identidad.role == 'ROLE_RECEPCIONISTA')">Actualizar</th>
+                            <th scope="col" *ngIf="(identidad.role == 'ROLE_GERENTE') || (identidad.role == 'ROLE_RECEPCIONISTA')">Eliminar</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -37,8 +37,8 @@
                             <td>{{reserva.email}}</td>
                             <td>{{reserva.createAt}}</td>
                             <td>{{reserva.numeroHabitaciones}}</td>
-                            <td><a [routerLink]="['../updatereserva']" (click)="updateReserva(reserva)"><i class="fas fa-paperclip text-info"></i></a></td>
-                            <td><a [routerLink]="[]" data-toggle="modal" data-target="#exampleModalCenter" (click)="setId(reserva.id)"><i class="fas fa-times text-info"></i></a></td>
+                            <td *ngIf="(identidad.role == 'ROLE_GERENTE') || (identidad.role == 'ROLE_RECEPCIONISTA')"><a [routerLink]="['../updatereserva']" (click)="updateReserva(reserva)"><i class="fas fa-paperclip text-info"></i></a></td>
+                            <td *ngIf="(identidad.role == 'ROLE_GERENTE') || (identidad.role == 'ROLE_RECEPCIONISTA')"><a [routerLink]="[]" data-toggle="modal" data-target="#exampleModalCenter" (click)="setId(reserva.id)"><i class="fas fa-times text-info"></i></a></td>
                           </tr>
                         </tbody>
                       </table>
@@ -48,7 +48,7 @@
           </div>
         </div>
       </div>
-      <div *ngIf="(identidad.role == 'ROLE_GERENTE') || (identidad.role == 'ROLE_RECEPCIONISTA')" class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+      <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
         <router-outlet></router-outlet>
       </div>
     </div>
