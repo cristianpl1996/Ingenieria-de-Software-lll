@@ -44,6 +44,7 @@ export class LoginComponent implements OnInit {
           this.identidad.cedula = res.Cedula;
           this.identidad.telefono = res.Telefono;
           this.identidad.email = res.Email;
+          this.identidad.role = res.Role[0].authority;
           this.token = res.access_token;
           localStorage.setItem('identidad', JSON.stringify(this.identidad));
           localStorage.setItem('token', this.token);

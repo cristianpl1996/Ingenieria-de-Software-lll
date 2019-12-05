@@ -11,18 +11,29 @@ export class HomeComponent implements OnInit {
 
   identidad: any;
   token: string;
+  reserva: any;
 
   constructor(private loginService: LoginService, private router: Router) {
     this.identidad = this.loginService.getIdentidad();
     this.token = this.loginService.getToken();
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log(this.reserva);
+  }
 
   logOut() {
     localStorage.clear();
     this.identidad = null;
     this.token = null;
     this.router.navigate(['/']);
+  }
+
+  setReserva(reserva: any) {
+    this.reserva = reserva;
+  }
+
+  getReserva() {
+    return this.reserva;
   }
 }

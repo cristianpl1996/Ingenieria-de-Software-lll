@@ -12,6 +12,8 @@ import { HomeComponent } from './components/home/home.component';
 import { RegisterHuespedComponent } from './components/register-huesped/register-huesped.component';
 import { RegisterReservaComponent } from './components/register-reserva/register-reserva.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RegisterReservaAppComponent } from './components/reservas/register-reserva-app/register-reserva-app.component';
+import { UpdateReservaAppComponent } from './components/reservas/update-reserva-app/update-reserva-app.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     LoginComponent,
     HomeComponent,
     RegisterHuespedComponent,
-    RegisterReservaComponent
+    RegisterReservaComponent,
+    RegisterReservaAppComponent,
+    UpdateReservaAppComponent
   ],
   imports: [
     BrowserModule,

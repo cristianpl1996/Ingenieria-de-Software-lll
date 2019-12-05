@@ -1,34 +1,74 @@
-<div>
-    <table>
-        <thead>
-        <tr>
-            <th scope="col">id</th>
-            <th scope="col">Nombre</th>
-            <th scope="col">Apellido</th>
-            <th scope="col">Cedula</th>
-            <th scope="col">Pais</th>
-            <th scope="col">Ciudad</th>
-            <th scope="col">Direccion</th>
-            <th scope="col">Telefono</th>
-            <th scope="col">Correo</th>
-            <th scope="col">Numero de Habitaciones</th>
-            <th scope="col">Fecha</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr *ngFor="let reserva of reservas">
-            <td>{{reserva.id}}</td>
-            <td>{{reserva.nombres}}</td>
-            <td>{{reserva.apellidos}}</td>
-            <td>{{reserva.cedula}}</td>
-            <td>{{reserva.pais}}</td>
-            <td>{{reserva.ciudad}}</td>
-            <td>{{reserva.direccion}}</td>
-            <td>{{reserva.telefono}}</td>
-            <td>{{reserva.correo}}</td>
-            <td>{{reserva.numeroHabitaciones}}</td>
-            <td>{{reserva.createAt}}</td>
-        </tr>
-        </tbody>
-    </table>
+<div class="nav-justified">
+    <ul class=" nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link text-info active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Reservas</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-info" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Registrar Reservas</a>
+      </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+      <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+        <div class="container mt-5">
+          <div class="row justify-content-center">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                  <div class="table-responsive">
+                      <table class="table table-info  text-center">
+                        <thead>
+                          <tr class="bg-info text-white">
+                            <th scope="col">Nombres</th>
+                            <th scope="col">Apellidos</th>
+                            <th scope="col">Cedula</th>
+                            <th scope="col">Telefono</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Fecha</th>
+                            <th scope="col">Habitaciones</th>
+                            <th scope="col">Actualizar</th>
+                            <th scope="col">Eliminar</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let reserva of reservas" class="text-info">
+                            <td>{{reserva.nombres}}</td>
+                            <td>{{reserva.apellidos}}</td>
+                            <td>{{reserva.cedula}}</td>
+                            <td>{{reserva.telefono}}</td>
+                            <td>{{reserva.email}}</td>
+                            <td>{{reserva.createAt}}</td>
+                            <td>{{reserva.numeroHabitaciones}}</td>
+                            <td><a [routerLink]="['../updatereserva']" (click)="updateReserva(reserva)"><i class="fas fa-paperclip text-info"></i></a></td>
+                            <td><a [routerLink]="[]" data-toggle="modal" data-target="#exampleModalCenter" (click)="setId(reserva.id)"><i class="fas fa-times text-info"></i></a></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                  </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+</div>
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+        <div class="modal-header table-info">
+            <h5 class="modal-title text-info" id="exampleModalLongTitle">Eliminar reserva</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body bg-white ">
+            <p class="text-secondary">Confirma la eliminacion de la reserva.</p>
+        </div>
+        <div class="modal-footer table-light">
+            <button type="button" class="btn btn-info text-white" data-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-info text-white" data-dismiss="modal" (click)="deleteReserva(getId())">Eliminar</button>
+        </div>
+        </div>
+    </div>
 </div>

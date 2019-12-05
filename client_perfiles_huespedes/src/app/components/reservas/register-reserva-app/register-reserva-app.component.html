@@ -1,0 +1,81 @@
+<div class="container-fluid p-4">
+    <div class="row justify-content-center align-items-center">
+        <div class="col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+            <div class="card text-center border-secondary shadow">
+                <div class="card-body">
+                    <form class="mt-3" [formGroup]="formReserva">
+                        <h5 class="card-title text-info mt-1">Registrar Reserva</h5>
+                        <div class="form-row mt-4">
+                            <div class="form-group col-6">
+                                <input type="text" class="form-control mt-auto" placeholder="Nombres" formControlName="nombres" [ngClass]="{ 'is-invalid': nombres.invalid && (nombres.dirty || nombres.touched) }"/>
+                                <div *ngIf="nombres.invalid && (nombres.dirty || nombres.touched)" class="invalid-feedback">
+                                <div *ngIf="nombres.errors.required">Ingrese nombres.</div>
+                                </div>
+                            </div>    
+                            <div class="form-group col-6">
+                                <input type="text" class="form-control mt-auto" placeholder="Apellidos" formControlName="apellidos" [ngClass]="{ 'is-invalid': apellidos.invalid && (apellidos.dirty || apellidos.touched) }"/>
+                                <div *ngIf="apellidos.invalid && (apellidos.dirty || apellidos.touched)" class="invalid-feedback">
+                                <div *ngIf="apellidos.errors.required">Ingrese apellidos.</div>
+                                </div> 
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-6">
+                                <input type="text" class="form-control mt-auto" placeholder="Cedula" formControlName="cedula" [ngClass]="{ 'is-invalid': cedula.invalid && (cedula.dirty || cedula.touched) }"/>
+                                <div *ngIf="cedula.invalid && (cedula.dirty || cedula.touched)" class="invalid-feedback">
+                                <div *ngIf="cedula.errors.required">Ingrese cedula.</div>
+                                </div>  
+                            </div>
+                            <div class="form-group col-6">
+                                <input type="email" class="form-control mt-auto" placeholder="Email" formControlName="email" [ngClass]="{ 'is-invalid': email.invalid && (email.dirty || email.touched) }"/>
+                                <div *ngIf="email.invalid && (email.dirty || email.touched)" class="invalid-feedback">
+                                <div *ngIf="email.errors.required">Ingrese email.</div>
+                            </div>  
+                        </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-6">
+                                <input type="text" class="form-control mt-auto" placeholder="Telefono" formControlName="telefono" [ngClass]="{ 'is-invalid': telefono.invalid && (telefono.dirty || telefono.touched) }"/>
+                                <div *ngIf="telefono.invalid && (telefono.dirty || telefono.touched)" class="invalid-feedback">
+                                <div *ngIf="telefono.errors.required">Ingrese telefono.</div>
+                                </div>
+                            </div>
+                            <div class="form-group col-6">
+                                <input type="text" class="form-control mt-auto" placeholder="Pais" formControlName="pais" [ngClass]="{ 'is-invalid': pais.invalid && (pais.dirty || pais.touched) }"/>
+                                <div *ngIf="pais.invalid && (pais.dirty || pais.touched)" class="invalid-feedback">
+                                <div *ngIf="pais.errors.required">Ingrese pais.</div>
+                            </div>  
+                        </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-6">
+                                <input type="text" class="form-control mt-auto" placeholder="Ciudad" formControlName="ciudad" [ngClass]="{ 'is-invalid': ciudad.invalid && (ciudad.dirty || ciudad.touched) }"/>
+                                <div *ngIf="ciudad.invalid && (ciudad.dirty || ciudad.touched)" class="invalid-feedback">
+                                <div *ngIf="ciudad.errors.required">Ingrese ciudad.</div>
+                                </div>
+                            </div>
+                            <div class="form-group col-6">
+                                <input type="text" class="form-control mt-auto" placeholder="Direccion" formControlName="direccion" [ngClass]="{ 'is-invalid': direccion.invalid && (direccion.dirty || direccion.touched) }"/>
+                                <div *ngIf="direccion.invalid && (direccion.dirty || direccion.touched)" class="invalid-feedback">
+                                <div *ngIf="direccion.errors.required">Ingrese direccion.</div>
+                                </div>  
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-6">
+                                <input type="text" class="form-control mt-auto" placeholder="Numero de Habitaciones" formControlName="numeroHabitaciones" [ngClass]="{ 'is-invalid': numeroHabitaciones.invalid && (numeroHabitaciones.dirty || numeroHabitaciones.touched) }"/>
+                                <div *ngIf="numeroHabitaciones.invalid && (numeroHabitaciones.dirty || numeroHabitaciones.touched)" class="invalid-feedback">
+                                <div *ngIf="numeroHabitaciones.errors.required">Ingrese numero de habitaciones.</div>
+                                </div>  
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <button [disabled]="!formReserva.valid" class="btn btn-info btn-block" (click)="saveReserva()">Registrar Reserva</button>
+                        </div>
+                        <p class="mt-2 mb-1 text-muted">Hotel Management System © HMS 2019</p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

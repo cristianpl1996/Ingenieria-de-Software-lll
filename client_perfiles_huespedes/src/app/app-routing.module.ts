@@ -7,17 +7,24 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterHuespedComponent } from './components/register-huesped/register-huesped.component';
 import { RegisterReservaComponent } from './components/register-reserva/register-reserva.component';
 import { HomeComponent } from './components/home/home.component';
+import { RegisterReservaAppComponent } from './components/reservas/register-reserva-app/register-reserva-app.component';
+import { UpdateReservaAppComponent } from './components/reservas/update-reserva-app/update-reserva-app.component';
+
 import { AuthGuard } from './guards/auth.guard';
 
 
 const routes: Routes = [
-  { path: 'empleados', component: EmpleadosComponent },
-  { path: 'huespedes', component: HuespedesComponent },
-  { path: 'reservas', component: ReservasComponent },
   { path: '', component: LoginComponent },
   { path: 'registerhuesped', component: RegisterHuespedComponent },
   { path: 'registerreserva', component: RegisterReservaComponent },
-  { path: 'home', component: HomeComponent, canActivate: [AuthGuard] }
+  { path: 'home', component: HomeComponent, canActivate: [AuthGuard], children: [
+    { path: 'empleados', component: EmpleadosComponent },
+    { path: 'huespedes', component: HuespedesComponent },
+    { path: 'reservas', component: ReservasComponent, children: [
+      { path: '', component: RegisterReservaAppComponent }
+    ] },
+    { path: 'updatereserva', component: UpdateReservaAppComponent }
+  ]}
 ];
 
 @NgModule({

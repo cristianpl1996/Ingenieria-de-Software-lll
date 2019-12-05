@@ -5,4 +5,5 @@ export interface Identidad {
     telefono?: number;
     email?: string;
     username?: string;
+    role?: string;
   }

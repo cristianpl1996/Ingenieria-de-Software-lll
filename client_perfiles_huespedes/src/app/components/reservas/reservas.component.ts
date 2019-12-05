@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ReservasService } from '../../services/reservas.service';
 import { Reserva } from '../../models/reserva';
+import { HomeComponent } from '../../components/home/home.component';
 
 @Component({
   selector: 'app-reservas',
@@ -11,12 +12,12 @@ export class ReservasComponent implements OnInit {
 
   reservas: Reserva[];
   reserva: Reserva;
+  idReserva: string;
 
-  constructor(private reservasService: ReservasService) { }
+  constructor(private reservasService: ReservasService, private homeComponent: HomeComponent) { }
 
   ngOnInit() {
     this.getReservas();
-    this.getReserva('1');
   }
 
   getReservas() {
@@ -33,7 +34,6 @@ export class ReservasComponent implements OnInit {
     this.reservasService.getReserva(id).subscribe(
       res => {
         this.reserva = res;
-        console.log(this.reserva);
       },
       err => console.log(err)
     );
@@ -43,6 +43,7 @@ export class ReservasComponent implements OnInit {
     this.reservasService.deleteReserva(id).subscribe(
       res => {
         console.log(res);
+        this.getReservas();
       },
       err => console.log(err)
     );
@@ -52,19 +53,22 @@ export class ReservasComponent implements OnInit {
     this.reservasService.saveReserva(reserva).subscribe(
       res => {
         console.log(res);
+        this.getReservas();
       },
       err => console.log(err)
     );
   }
 
-  updateReserva(id: string, reserva: Reserva) {
-    this.reservasService.updateReserva(id, reserva).subscribe(
-      res => {
-        console.log(res);
-      },
-      err => console.log(err)
-    );
+  updateReserva(reserva: any) {
+    console.log(reserva);
+    this.homeComponent.setReserva(reserva);
   }
 
+  setId(id: string) {
+    this.idReserva = id;
+  }
 
+  getId() {
+    return this.idReserva;
+  }
 }

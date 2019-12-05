@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { ReservasService } from '../../services/reservas.service';
-import { Reserva } from '../../models/reserva';
+import { ReservasService } from '../../../services/reservas.service';
+import { Reserva } from '../../../models/reserva';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ReservasComponent } from '../reservas.component';
 
 @Component({
-  selector: 'app-register-reserva',
-  templateUrl: './register-reserva.component.html',
-  styleUrls: ['./register-reserva.component.css']
+  selector: 'app-register-reserva-app',
+  templateUrl: './register-reserva-app.component.html',
+  styleUrls: ['./register-reserva-app.component.css']
 })
-export class RegisterReservaComponent implements OnInit {
+export class RegisterReservaAppComponent implements OnInit {
 
   reserva: Reserva = {};
 
@@ -29,7 +29,7 @@ export class RegisterReservaComponent implements OnInit {
     });
   }
 
-  constructor(private reservasService: ReservasService, private router: Router) {
+  constructor(private reservasService: ReservasService, private reservasComponent: ReservasComponent) {
     this.formReserva = this.createFormGroup();
   }
 
@@ -43,6 +43,7 @@ export class RegisterReservaComponent implements OnInit {
       this.reservasService.saveReserva(this.reserva).subscribe(
         res => {
           console.log(res);
+          this.reservasComponent.getReservas();
           alert('Reserva Registrada');
         },
         err => console.log(err)
@@ -102,4 +103,5 @@ export class RegisterReservaComponent implements OnInit {
   get numeroHabitaciones() {
     return this.formReserva.get('numeroHabitaciones');
   }
+
 }
