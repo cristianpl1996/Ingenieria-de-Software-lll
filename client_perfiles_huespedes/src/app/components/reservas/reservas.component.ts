@@ -49,16 +49,6 @@ export class ReservasComponent implements OnInit {
     );
   }
 
-  saveReserva(reserva: Reserva) {
-    this.reservasService.saveReserva(reserva).subscribe(
-      res => {
-        console.log(res);
-        this.getReservas();
-      },
-      err => console.log(err)
-    );
-  }
-
   updateReserva(reserva: any) {
     console.log(reserva);
     this.homeComponent.setReserva(reserva);

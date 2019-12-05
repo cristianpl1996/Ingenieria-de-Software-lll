@@ -12,6 +12,7 @@ export class HomeComponent implements OnInit {
   identidad: any;
   token: string;
   reserva: any;
+  huesped: any;
 
   constructor(private loginService: LoginService, private router: Router) {
     this.identidad = this.loginService.getIdentidad();
@@ -19,7 +20,6 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.reserva);
   }
 
   logOut() {
@@ -35,5 +35,13 @@ export class HomeComponent implements OnInit {
 
   getReserva() {
     return this.reserva;
+  }
+
+  setHuesped(huesped: any) {
+    this.huesped = huesped;
+  }
+
+  getHuesped() {
+    return this.huesped;
   }
 }

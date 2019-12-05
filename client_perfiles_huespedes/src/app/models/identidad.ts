@@ -6,4 +6,5 @@ export interface Identidad {
     email?: string;
     username?: string;
     role?: string;
+    id?: string;
   }

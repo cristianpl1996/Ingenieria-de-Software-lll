@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HuespedesService } from '../../services/huespedes.service';
 import { Huesped } from '../../models/huesped';
+import { HomeComponent } from '../../components/home/home.component';
 
 
 @Component({
@@ -12,12 +13,12 @@ export class HuespedesComponent implements OnInit {
 
   huespedes: Huesped[];
   huesped: Huesped;
+  idHuesped: string;
 
-  constructor(private huespedesService: HuespedesService) { }
+  constructor(private huespedesService: HuespedesService, private homeComponent: HomeComponent) { }
 
   ngOnInit() {
     this.getHuespedes();
-    this.getHuesped('1');
   }
 
   getHuespedes() {
@@ -44,27 +45,22 @@ export class HuespedesComponent implements OnInit {
     this.huespedesService.deleteHuesped(id).subscribe(
       res => {
         console.log(res);
+        this.getHuespedes();
       },
       err => console.log(err)
     );
   }
 
-  saveHuesped(huesped: Huesped) {
-    this.huespedesService.saveHuesped(huesped).subscribe(
-      res => {
-        console.log(res);
-      },
-      err => console.log(err)
-    );
+  updateHuesped(huesped: any) {
+    console.log(huesped);
+    this.homeComponent.setHuesped(huesped);
   }
 
-  updateEmpleado(id: string, huesped: Huesped) {
-    this.huespedesService.updateHuesped(id, huesped).subscribe(
-      res => {
-        console.log(res);
-      },
-      err => console.log(err)
-    );
+  setId(id: string) {
+    this.idHuesped = id;
   }
 
+  getId() {
+    return this.idHuesped;
+  }
 }
