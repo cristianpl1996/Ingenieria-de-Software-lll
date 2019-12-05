@@ -17,6 +17,8 @@ import { UpdateReservaAppComponent } from './components/reservas/update-reserva-
 import { RegisterHuespedAppComponent } from './components/huespedes/register-huesped-app/register-huesped-app.component';
 import { UpdateHuespedAppComponent } from './components/huespedes/update-huesped-app/update-huesped-app.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { RegisterEmpleadoAppComponent } from './components/empleados/register-empleado-app/register-empleado-app.component';
+import { UpdateEmpleadoAppComponent } from './components/empleados/update-empleado-app/update-empleado-app.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { ProfileComponent } from './components/profile/profile.component';
     UpdateReservaAppComponent,
     RegisterHuespedAppComponent,
     UpdateHuespedAppComponent,
-    ProfileComponent
+    ProfileComponent,
+    RegisterEmpleadoAppComponent,
+    UpdateEmpleadoAppComponent
   ],
   imports: [
     BrowserModule,

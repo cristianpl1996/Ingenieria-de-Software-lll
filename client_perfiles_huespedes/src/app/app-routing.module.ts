@@ -12,6 +12,8 @@ import { RegisterReservaAppComponent } from './components/reservas/register-rese
 import { UpdateReservaAppComponent } from './components/reservas/update-reserva-app/update-reserva-app.component';
 import { RegisterHuespedAppComponent } from './components/huespedes/register-huesped-app/register-huesped-app.component';
 import { UpdateHuespedAppComponent } from './components/huespedes/update-huesped-app/update-huesped-app.component';
+import { RegisterEmpleadoAppComponent } from './components/empleados/register-empleado-app/register-empleado-app.component';
+import { UpdateEmpleadoAppComponent } from './components/empleados/update-empleado-app/update-empleado-app.component';
 import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
@@ -20,7 +22,9 @@ const routes: Routes = [
   { path: 'registerreserva', component: RegisterReservaComponent },
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard], children: [
     { path: '', component: ProfileComponent },
-    { path: 'empleados', component: EmpleadosComponent },
+    { path: 'empleados', component: EmpleadosComponent, children: [
+      { path: '', component: RegisterEmpleadoAppComponent }
+    ] },
     { path: 'huespedes', component: HuespedesComponent, children: [
       { path: '', component: RegisterHuespedAppComponent }
     ] },
@@ -28,7 +32,8 @@ const routes: Routes = [
       { path: '', component: RegisterReservaAppComponent }
     ] },
     { path: 'updatereserva', component: UpdateReservaAppComponent },
-    { path: 'updatehuesped', component: UpdateHuespedAppComponent }
+    { path: 'updatehuesped', component: UpdateHuespedAppComponent },
+    { path: 'updateempleado', component: UpdateEmpleadoAppComponent }
   ]}
 ];
 

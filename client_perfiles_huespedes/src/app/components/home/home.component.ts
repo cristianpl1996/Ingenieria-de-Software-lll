@@ -13,6 +13,7 @@ export class HomeComponent implements OnInit {
   token: string;
   reserva: any;
   huesped: any;
+  empleado: any;
 
   constructor(private loginService: LoginService, private router: Router) {
     this.identidad = this.loginService.getIdentidad();
@@ -43,5 +44,13 @@ export class HomeComponent implements OnInit {
 
   getHuesped() {
     return this.huesped;
+  }
+
+  setEmpleado(empleado: any) {
+    this.empleado = empleado;
+  }
+
+  getEmpleado() {
+    return this.empleado;
   }
 }

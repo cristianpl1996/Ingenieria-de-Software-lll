@@ -5,7 +5,9 @@ export interface Empleado {
     apellidos?: string;
     cedula?: string;
     telefono?: number;
-    correo?: string;
-    contraseña?: string;
+    enabled?: boolean;
+    email?: string;
+    username?: string;
+    password?: string;
     createAt?: Date;
   }

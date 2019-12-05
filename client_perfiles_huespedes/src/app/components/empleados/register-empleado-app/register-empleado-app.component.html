@@ -1,0 +1,67 @@
+<div class="container-fluid p-4">
+    <div class="row justify-content-center align-items-center">
+        <div class="col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+            <div class="card text-center border-secondary shadow">
+                <div class="card-body">
+                    <form class="mt-3" [formGroup]="formEmpleado">
+                        <h5 class="card-title text-info mt-1">Registrar Empleado</h5>
+                        <div class="form-row mt-2">
+                            <div class="form-group col-6">
+                                <input type="text" class="form-control mt-auto" placeholder="Nombres" formControlName="nombres" [ngClass]="{ 'is-invalid': nombres.invalid && (nombres.dirty || nombres.touched) }"/>
+                                <div *ngIf="nombres.invalid && (nombres.dirty || nombres.touched)" class="invalid-feedback">
+                                <div *ngIf="nombres.errors.required">Ingrese nombres.</div>
+                                </div>
+                            </div>    
+                            <div class="form-group col-6">
+                                <input type="text" class="form-control mt-auto" placeholder="Apellidos" formControlName="apellidos" [ngClass]="{ 'is-invalid': apellidos.invalid && (apellidos.dirty || apellidos.touched) }"/>
+                                <div *ngIf="apellidos.invalid && (apellidos.dirty || apellidos.touched)" class="invalid-feedback">
+                                <div *ngIf="apellidos.errors.required">Ingrese apellidos.</div>
+                                </div> 
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-6">
+                                <input type="text" class="form-control mt-auto" placeholder="Cedula" formControlName="cedula" [ngClass]="{ 'is-invalid': cedula.invalid && (cedula.dirty || cedula.touched) }"/>
+                                <div *ngIf="cedula.invalid && (cedula.dirty || cedula.touched)" class="invalid-feedback">
+                                <div *ngIf="cedula.errors.required">Ingrese cedula.</div>
+                                </div>  
+                            </div>
+                            <div class="form-group col-6">
+                                <input type="text" class="form-control mt-auto" placeholder="Telefono" formControlName="telefono" [ngClass]="{ 'is-invalid': telefono.invalid && (telefono.dirty || telefono.touched) }"/>
+                                <div *ngIf="telefono.invalid && (telefono.dirty || telefono.touched)" class="invalid-feedback">
+                                <div *ngIf="telefono.errors.required">Ingrese telefono.</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-6">
+                                <input type="text" class="form-control mt-auto" placeholder="Username" formControlName="username" [ngClass]="{ 'is-invalid': username.invalid && (username.dirty || username.touched) }"/>
+                                <div *ngIf="username.invalid && (username.dirty || username.touched)" class="invalid-feedback">
+                                <div *ngIf="username.errors.required">Ingrese username.</div>
+                                </div>  
+                            </div>
+                            <div class="form-group col-6">
+                                <input type="password" class="form-control mt-auto" placeholder="Password" formControlName="password" [ngClass]="{ 'is-invalid': password.invalid && (password.dirty || password.touched) }"/>
+                                <div *ngIf="password.invalid && (password.dirty || password.touched)" class="invalid-feedback">
+                                <div *ngIf="password.errors.required">Ingrese password.</div>
+                                </div>  
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-6">
+                                <input type="email" class="form-control mt-auto" placeholder="Email" formControlName="email" [ngClass]="{ 'is-invalid': email.invalid && (email.dirty || email.touched) }"/>
+                                <div *ngIf="email.invalid && (email.dirty || email.touched)" class="invalid-feedback">
+                                <div *ngIf="email.errors.required">Ingrese email.</div>
+                                </div>  
+                            </div>
+                        </div>
+                        <div class="form-group">
+                        <button [disabled]="!formEmpleado.valid" class="btn btn-info btn-block" (click)="saveHuesped()">Registrar Empleado</button>
+                        </div>
+                        <p class="mt-2 mb-1 text-muted">Hotel Management System © HMS 2019</p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

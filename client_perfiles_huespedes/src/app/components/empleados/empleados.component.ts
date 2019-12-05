@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { EmpleadosService } from '../../services/empleados.service';
 import { Empleado } from '../../models/empleado';
+import { HomeComponent } from '../../components/home/home.component';
 
 @Component({
   selector: 'app-empleados',
@@ -11,12 +12,12 @@ export class EmpleadosComponent implements OnInit {
 
   empleados: Empleado[];
   empleado: Empleado;
+  idEmpleado: string;
 
-  constructor(private empleadosService: EmpleadosService) { }
+  constructor(private empleadosService: EmpleadosService, private homeComponent: HomeComponent) { }
 
   ngOnInit() {
     this.getEmpleados();
-    this.getEmpleado('1');
   }
 
   getEmpleados() {
@@ -33,7 +34,6 @@ export class EmpleadosComponent implements OnInit {
     this.empleadosService.getEmpleado(id).subscribe(
       res => {
         this.empleado = res;
-        console.log(this.empleado);
       },
       err => console.log(err)
     );
@@ -43,26 +43,22 @@ export class EmpleadosComponent implements OnInit {
     this.empleadosService.deleteEmpleado(id).subscribe(
       res => {
         console.log(res);
+        this.getEmpleados();
       },
       err => console.log(err)
     );
   }
 
-  saveEmpleado(empleado: Empleado) {
-    this.empleadosService.saveEmpleado(empleado).subscribe(
-      res => {
-        console.log(res);
-      },
-      err => console.log(err)
-    );
+  updateEmpleado(empleado: any) {
+    console.log(empleado);
+    this.homeComponent.setEmpleado(empleado);
   }
 
-  updateEmpleado(id: string, empleado: Empleado) {
-    this.empleadosService.updateEmpleado(id, empleado).subscribe(
-      res => {
-        console.log(res);
-      },
-      err => console.log(err)
-    );
+  setId(id: string) {
+    this.idEmpleado = id;
+  }
+
+  getId() {
+    return this.idEmpleado;
   }
 }

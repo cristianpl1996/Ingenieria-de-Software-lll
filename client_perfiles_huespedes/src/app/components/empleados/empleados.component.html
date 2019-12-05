@@ -1,30 +1,72 @@
-<div>
-    <table>
-        <thead>
-        <tr>
-            <th scope="col">id</th>
-            <th scope="col">Rol</th>
-            <th scope="col">Nombre</th>
-            <th scope="col">Apellido</th>
-            <th scope="col">Cedula</th>
-            <th scope="col">Telefono</th>
-            <th scope="col">Correo</th>
-            <th scope="col">Contraseña</th>
-            <th scope="col">Fecha</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr *ngFor="let empleado of empleados">
-            <td>{{empleado.id}}</td>
-            <td>{{empleado.rol}}</td>
-            <td>{{empleado.nombres}}</td>
-            <td>{{empleado.apellidos}}</td>
-            <td>{{empleado.cedula}}</td>
-            <td>{{empleado.telefono}}</td>
-            <td>{{empleado.correo}}</td>
-            <td>******</td>
-            <td>{{empleado.createAt}}</td>
-        </tr>
-        </tbody>
-    </table>
+<div class="nav-justified">
+    <ul class=" nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item">
+        <a class="nav-link text-info active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Empleados</a>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link text-info" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Registrar Empleado</a>
+        </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+        <div class="container mt-5">
+            <div class="row justify-content-center">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                    <div class="table-responsive">
+                        <table class="table table-info  text-center">
+                        <thead>
+                            <tr class="bg-info text-white">
+                            <th scope="col">Nombres</th>
+                            <th scope="col">Apellidos</th>
+                            <th scope="col">Cedula</th>
+                            <th scope="col">Telefono</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Fecha</th>
+                            <th scope="col">Actualizar</th>
+                            <th scope="col">Eliminar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let empleado of empleados" class="text-info">
+                            <td>{{empleado.nombres}}</td>
+                            <td>{{empleado.apellidos}}</td>
+                            <td>{{empleado.cedula}}</td>
+                            <td>{{empleado.telefono}}</td>
+                            <td>{{empleado.email}}</td>
+                            <td>{{empleado.createAt}}</td>
+                            <td><a [routerLink]="['../updateempleado']" (click)="updateEmpleado(empleado)"><i class="fas fa-paperclip text-info"></i></a></td>
+                            <td><a [routerLink]="[]" data-toggle="modal" data-target="#exampleModalCenter" (click)="setId(empleado.id)"><i class="fas fa-times text-info"></i></a></td>
+                            </tr>
+                        </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
+        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+        <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+        <div class="modal-header table-info">
+            <h5 class="modal-title text-info" id="exampleModalLongTitle">Eliminar empleado</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body bg-white ">
+            <p class="text-secondary">Confirma la eliminacion del empleado.</p>
+        </div>
+        <div class="modal-footer table-light">
+            <button type="button" class="btn btn-info text-white" data-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-info text-white" data-dismiss="modal" (click)="deleteEmpleado(getId())">Eliminar</button>
+        </div>
+        </div>
+    </div>
 </div>
