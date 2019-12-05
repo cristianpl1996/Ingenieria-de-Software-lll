@@ -48,7 +48,7 @@
           </div>
         </div>
       </div>
-      <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+      <div *ngIf="(identidad.role == 'ROLE_GERENTE') || (identidad.role == 'ROLE_RECEPCIONISTA')" class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
         <router-outlet></router-outlet>
       </div>
     </div>

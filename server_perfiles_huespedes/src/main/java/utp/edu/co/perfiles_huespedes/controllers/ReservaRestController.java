@@ -85,7 +85,7 @@ public class ReservaRestController {
 			reservaActual.setPais(reserva.getPais());
 			reservaActual.setCiudad(reserva.getCiudad());
 			reservaActual.setDireccion(reserva.getDireccion());
-			reservaActual.setCorreo(reserva.getCorreo());
+			reservaActual.setEmail(reserva.getEmail());
 			reservaActual.setNumeroHabitaciones(reserva.getNumeroHabitaciones());
 			reservaUpdate = reservaService.save(reservaActual);
 		} catch (DataAccessException e) {

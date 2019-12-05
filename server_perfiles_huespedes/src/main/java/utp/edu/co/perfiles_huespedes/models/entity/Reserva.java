@@ -31,7 +31,7 @@ public class Reserva implements Serializable {
 	private String ciudad;
 	private String direccion;
 	@Column(nullable=false, unique=true)
-	private String correo;
+	private String email;
 	@Column(name = "numero_habitaciones", nullable=false)
 	private Long numeroHabitaciones;
 	@Column(name = "create_at")
@@ -118,13 +118,13 @@ public class Reserva implements Serializable {
 		this.direccion = direccion;
 	}
 
-	public String getCorreo() {
-		return correo;
+	public String getEmail() {
+		return email;
 	}
 
 
-	public void setCorreo(String correo) {
-		this.correo = correo;
+	public void setEmail(String correo) {
+		this.email = correo;
 	}
 
 

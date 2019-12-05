@@ -5,16 +5,15 @@ import { LoginService } from '../services/login.service';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuard implements CanActivate {
-
+export class RolGuard implements CanActivate {
   constructor(private loginService: LoginService, private router: Router) {}
 
   canActivate() {
 
     const identidad = this.loginService.getIdentidad();
-    const token = this.loginService.getToken();
 
-    if (identidad && token) {
+
+    if ((identidad.role === 'ROLE_GERENTE') || (identidad.role === 'ROLE_RECEPCIONISTA')) {
       return true;
     } else {
       this.router.navigate(['../']);

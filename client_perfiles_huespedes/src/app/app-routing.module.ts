@@ -15,6 +15,7 @@ import { UpdateHuespedAppComponent } from './components/huespedes/update-huesped
 import { RegisterEmpleadoAppComponent } from './components/empleados/register-empleado-app/register-empleado-app.component';
 import { UpdateEmpleadoAppComponent } from './components/empleados/update-empleado-app/update-empleado-app.component';
 import { AuthGuard } from './guards/auth.guard';
+import { RolGuard } from './guards/rol.guard';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -22,18 +23,18 @@ const routes: Routes = [
   { path: 'registerreserva', component: RegisterReservaComponent },
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard], children: [
     { path: '', component: ProfileComponent },
-    { path: 'empleados', component: EmpleadosComponent, children: [
+    { path: 'empleados', component: EmpleadosComponent, canActivate: [RolGuard], children: [
       { path: '', component: RegisterEmpleadoAppComponent }
     ] },
-    { path: 'huespedes', component: HuespedesComponent, children: [
+    { path: 'huespedes', component: HuespedesComponent, canActivate: [RolGuard], children: [
       { path: '', component: RegisterHuespedAppComponent }
     ] },
-    { path: 'reservas', component: ReservasComponent, children: [
+    { path: 'reservas', component: ReservasComponent, canActivate: [RolGuard], children: [
       { path: '', component: RegisterReservaAppComponent }
     ] },
-    { path: 'updatereserva', component: UpdateReservaAppComponent },
-    { path: 'updatehuesped', component: UpdateHuespedAppComponent },
-    { path: 'updateempleado', component: UpdateEmpleadoAppComponent }
+    { path: 'updatereserva', component: UpdateReservaAppComponent, canActivate: [RolGuard]},
+    { path: 'updatehuesped', component: UpdateHuespedAppComponent, canActivate: [RolGuard]},
+    { path: 'updateempleado', component: UpdateEmpleadoAppComponent, canActivate: [RolGuard]}
   ]}
 ];
 

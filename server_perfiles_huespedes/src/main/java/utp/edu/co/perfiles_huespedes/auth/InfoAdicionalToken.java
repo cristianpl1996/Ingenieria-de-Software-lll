@@ -36,7 +36,8 @@ public class InfoAdicionalToken implements TokenEnhancer {
 			info.put("Cedula", huesped.getCedula());
 			info.put("Telefono", huesped.getTelefono());
 			info.put("Email", huesped.getEmail());
-			info.put("Tipo", authentication.getAuthorities());
+			info.put("Id", huesped.getId());
+			info.put("Role", authentication.getAuthorities());
 			((DefaultOAuth2AccessToken) accessToken).setAdditionalInformation(info);
 		} else {
 			Map<String, Object> info = new HashMap<>();
@@ -46,6 +47,7 @@ public class InfoAdicionalToken implements TokenEnhancer {
 			info.put("Cedula", empleado.getCedula());
 			info.put("Telefono", empleado.getTelefono());
 			info.put("Email", empleado.getEmail());
+			info.put("Id", empleado.getId());
 			info.put("Role", authentication.getAuthorities());
 			((DefaultOAuth2AccessToken) accessToken).setAdditionalInformation(info);
 		}

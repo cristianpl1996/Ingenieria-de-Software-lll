@@ -14,11 +14,11 @@
                   <hr class="sidebar-divider my-0">
                   <ul class="nav navbar-nav text-light" id="accordionSidebar">
                       <li class="nav-item" role="presentation">
-                        <a class="nav-link active" [routerLink]="['/home/empleados']">
+                        <a *ngIf="(identidad.role == 'ROLE_GERENTE') || (identidad.role == 'ROLE_RECEPCIONISTA')" class="nav-link active" [routerLink]="['/home/empleados']">
                             <i class="fas fa-users"></i>&nbsp;
                             <span>Empleados</span>
                         </a>
-                        <a class="nav-link active" [routerLink]="['/home/huespedes']">
+                        <a *ngIf="(identidad.role == 'ROLE_GERENTE') || (identidad.role == 'ROLE_RECEPCIONISTA')" class="nav-link active" [routerLink]="['/home/huespedes']">
                             <i class="fas fa-user"></i>&nbsp;
                             <span>Huespedes</span>
                         </a>
